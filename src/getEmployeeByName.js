@@ -3,8 +3,14 @@ const data = require('../data/zoo_data');
 const { employees } = data;
 
 function getEmployeeByName(employeeName) {
-  employees.forEach(({ firstName }, index) => firstName === employeeName, employees[index]);
+  let chosenEmployee = {};
+  employees.forEach(({ firstName, lastName }, index) => {
+    if (firstName === employeeName || lastName === employeeName) {
+      chosenEmployee = employees[index];
+    }
+  });
+  return chosenEmployee;
 }
-getEmployeeByName('Emery');
+// console.log(getEmployeeByName('Emery'));
 
 module.exports = getEmployeeByName;
