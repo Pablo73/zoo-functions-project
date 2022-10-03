@@ -1,7 +1,7 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
 describe('Testes da função getOpeningHours', () => {
-  it('retorna os horarios te toda a semana', () => {
+  it('retorna os horarios de toda a semana', () => {
     const actual = getOpeningHours();
     const expected = {
       Tuesday: { open: 8, close: 6 },
@@ -17,6 +17,12 @@ describe('Testes da função getOpeningHours', () => {
 
   it('retorna uma string com o zoo fechando', () => {
     const actual = getOpeningHours('Monday', '09:00-AM');
+    const expected = 'The zoo is closed';
+    expect(actual).toBe(expected);
+  });
+
+  it('retorna uma string com o zoo fechando maiusculas', () => {
+    const actual = getOpeningHours('MONDAY', '09:00-AM');
     const expected = 'The zoo is closed';
     expect(actual).toBe(expected);
   });
@@ -47,5 +53,13 @@ describe('Testes da função getOpeningHours', () => {
 
   it('dispara erro com a mensagem "The abbreviation must be \'AM\' or \'PM\'", quando o minuto inserido não for correto', () => {
     expect(() => getOpeningHours('Sunday', '09:c0-AM')).toThrow('The minutes should represent a number');
+  });
+
+  it('dispara erro com a mensagem "The abbreviation must be \'AM\' or \'PM\'", quando o valor hora for maior que 12', () => {
+    expect(() => getOpeningHours('MONDAY', '13:00-PM')).toThrow('The hour must be between 0 and 12');
+  });
+
+  it('dispara erro com a mensagem "The abbreviation must be \'AM\' or \'PM\'", quando o valor minto for maior a 59', () => {
+    expect(() => getOpeningHours('MONDAY', '11:60-PM')).toThrow('The minutes must be between 0 and 59');
   });
 });
