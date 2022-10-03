@@ -59,7 +59,7 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => getOpeningHours('MONDAY', '13:00-PM')).toThrow('The hour must be between 0 and 12');
   });
 
-  it('dispara erro com a mensagem "The abbreviation must be \'AM\' or \'PM\'", quando o valor minto for maior a 59', () => {
+  it('dispara erro com a mensagem "The abbreviation must be \'AM\' or \'PM\'", quando o valor for maior a 59', () => {
     expect(() => getOpeningHours('MONDAY', '11:60-PM')).toThrow('The minutes must be between 0 and 59');
   });
 });
