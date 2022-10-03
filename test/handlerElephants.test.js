@@ -49,7 +49,7 @@ describe('Testes da função HandlerElephants', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('se o parametro não for do tipo string não for escrito corretamente', () => {
+  it('se o parametro for do tipo string mas não for escrito corretamente', () => {
     const actual = handlerElephants('nam');
     const expected = null;
     expect(actual).toEqual(expected);

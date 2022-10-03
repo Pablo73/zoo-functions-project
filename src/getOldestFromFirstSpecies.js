@@ -6,11 +6,12 @@ const { species } = data;
 const getEmployee = (id) => employees.find((element) => element.id === id);
 
 function getAnimal(id) {
-  return species.find((element) => element.id === id)
-    .residents.reduce((acc, curr, index) => {
-      return acc > curr.age ? acc : curr.age;
-    }, 0);
+  return species.find((element) => element.id === id);
 }
+// .residents.reduce((acc, curr, index) => {
+//   return acc > curr.age ? acc : curr.age;
+// }, 0);
+// }
 
 function getOldestFromFirstSpecies(id) {
   return getAnimal(getEmployee(id).responsibleFor[0]);
